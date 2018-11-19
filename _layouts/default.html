@@ -32,22 +32,13 @@
               </li>
             </ul>
           </nav>
+          {{ content }}
+          {% include footer.html %}
         </div>
       </div>
     </main>
+    {% include javascripts.html %}
 <!--
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
-
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
     {% include analytics.html %}
 -->
   </body>
