@@ -1,5 +1,5 @@
-<footer>
+<footer class="footer {% if site.scrollappear_enabled %}scrollappear{% endif %}">
   <p>
-    Make. Code. Do. is a blog about things I, <a href="/about.html" title="About me">Simon Kendall</a>, have found useful or interesting.
+    {{ site.name }} is a blog about things I, <a href="{{ 'about' | relative_url }}" title="About me">Simon Kendall</a>, have found useful or interesting.
   </p>
 </footer>
