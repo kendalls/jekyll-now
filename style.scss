@@ -175,6 +175,10 @@ svg:not(:root) {
   transition: opacity 0.2s linear;
 }
 
+.article-list-item a:hover h5 svg {
+  opacity: 100;
+}
+
 .article-list-item p {
   display: block;
   margin: 12px 0 10px;
