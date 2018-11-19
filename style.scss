@@ -102,6 +102,28 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
+h1 {
+  font-size: 25.6px;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  color: #121111;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 20.8px;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 17.6px;
+  font-weight: 500;
+}
+
 h5 {
   font-size: 18.72px;
   font-weight: 500;
@@ -210,6 +232,114 @@ svg:not(:root) {
 .article-list-tags {
   display: inline-block;
   vertical-align: top;
+}
+
+.article {
+  display: block;
+  margin: 100px 0;
+}
+
+.article-header {
+  display: block;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ebeaea;
+}
+
+.article-header p {
+  display: block;
+  margin: 12px 0 10px;
+  font-size: 16px;
+  color: #615b5b;
+}
+
+.article-content {
+  display: block;
+}
+
+.article-content h2, .article-content h3, .article-content h4 {
+  display: block;
+  margin-bottom: 10px;
+  font-family: lato,Helvetica,Arial,sans-serif;
+  color: #121111;
+}
+
+.article-content p, .article-content ul, .article-content ol, .article-content img, .article-content blockquote {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.article-share {
+  display: block;
+  margin-top: -4px;
+}
+
+.article-share a {
+  display: inline-block;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.article-share a svg {
+  vertical-align: middle;
+  transition: fill .2s linear;
+  fill: #ada8a8;
+  width: 20px;
+}
+
+.article-comments {
+  display: block;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #ebeaea;
+}
+
+code, kbd, samp, pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+.highlight {
+  padding: 25px;
+  margin: 30px 0;
+  overflow: auto;
+  font-weight: 400;
+  background: #faf9f9;
+  border-radius: 4px;
+}
+
+.highlight .c {
+  font-style: italic;
+  color: #998;
+}
+
+.highlight .nt {
+  color: navy;
+}
+
+.highlight .na {
+  color: teal;
+}
+
+.highlight .s {
+  color: #d14;
+}
+
+.highlight pre {
+  margin: 0;
+}
+
+.highlighter-rouge {
+  padding: 2px 4px;
+  font-size: 14px;
+  color: #d14;
+  background: #faf9f9;
+  border: 1px solid #ebeaea;
+  border-radius: 1px;
 }
 
 .footer {
