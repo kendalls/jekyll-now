@@ -20,16 +20,7 @@
     <main>
       <div class="grid grid-centred">
         <div class="grid-cell">
-          <nav class="header-nav scrollappear appear appeared">
-            <a href="/" class="header-logo" title="Make">Make. Code. Do.</a>
-            <ul class="header-links">
-              <li>
-                <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
-                  {% include svg-icon.html icon="rss" %}
-                </a>
-              </li>
-            </ul>
-          </nav>
+          {% include navigation.html %}
           {{ content }}
           {% include footer.html %}
         </div>
