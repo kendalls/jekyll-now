@@ -11,28 +11,26 @@
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:700|Lato:300,400,700" rel="stylesheet">
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
   <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
+    <main>
+      <div class="grid grid-centred">
+        <div class="grid-cell">
+          <nav class="header-nav scrollappear appear appeared">
+            <a href="/" class="header-logo" title="Make">Make</a>
+            <ul class="header-links">
+              <li>
+                <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS"></a>
+              </li>
+            </ul>
           </nav>
-        </header>
+        </div>
       </div>
-    </div>
+    </main>
 
     <div id="main" role="main" class="container">
       {{ content }}
