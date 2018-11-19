@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="wf-lato-n4-active wf-cormorantgaramond-n7-active wf-lato-n3-active wf-lato-n7-active wf-active">
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-
-    {% include meta.html %}
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:700|Lato:300,400,700" rel="stylesheet">
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
-
+  {% include head.html %}
   <body>
     <main>
       <div class="grid grid-centred">
