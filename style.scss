@@ -107,6 +107,24 @@ a {
   color: #393636;
 }
 
+.header-links li a:hover svg {
+  fill: #121111;
+}
+
+.header-links li a svg {
+  width: 16px;
+  height: 16px;
+  fill: #393636;
+}
+
+svg {
+  transition: fill 0.2s linear;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
