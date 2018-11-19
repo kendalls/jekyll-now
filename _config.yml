@@ -17,7 +17,7 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 
 about_enabled: false # Change to true to show an icon in the navigation that redirects to the about page
 rss_enabled: true
-scrollappear_enabled: false
+scrollappear_enabled: true
 
 # Includes an icon in the footer for each username you enter
 footer-links:
