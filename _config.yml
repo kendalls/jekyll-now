@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: Your Name
+name: Make. Code. Do.
 
 # Short bio or description (displayed in the header)
 description: Web Developer from Somewhere
@@ -14,6 +14,10 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 #
 # Flags below are optional
 #
+
+about_enabled: false # Change to true to show an icon in the navigation that redirects to the about page
+rss_enabled: true
+scrollappear_enabled: false
 
 # Includes an icon in the footer for each username you enter
 footer-links:
@@ -34,14 +38,14 @@ footer-links:
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
-disqus:
+disqus: kendalls
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url:
+url: http://www.simonkendall.me
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
