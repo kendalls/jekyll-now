@@ -270,7 +270,19 @@ svg:not(:root) {
   color: #121111;
 }
 
-.article-content p, .article-content ul, .article-content ol, .article-content img, .article-content blockquote {
+.article-content ol {
+  display: block;
+  margin-bottom: 30px;
+  list-style: decimal;
+}
+
+.article-content ul {
+  display: block;
+  margin-bottom: 30px;
+  list-style: disc;
+}
+
+.article-content p, .article-content img, .article-content blockquote {
   display: block;
   margin-bottom: 30px;
 }
