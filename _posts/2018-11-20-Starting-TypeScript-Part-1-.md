@@ -50,8 +50,8 @@ npm install @types/jquery --save-dev
 
 ## Step 2: Start writing TypeScript
 1. Create a folder for your TypeScript files and add a new TypeScript File, named Fusion5.ts, to the project.
-2. Add the following code to the file. We'll use this file as a standard reference in the TypeScript files we create in place of script Web Resources. This means we have Intellisense for common types and workaround the jQuery aliases being defined in the parent window to the Web Resource script.
-{% highlight c# %}
+2. Add the following code to the file. We'll use this file as a standard reference in the TypeScript files we create in place of script Web Resources. This means we have Intellisense for common types and a workaround for the jQuery aliases being defined in the parent window to the Web Resource script.
+{% highlight cs %}
 /// <reference path="../node_modules/@types/jquery/index.d.ts" />
 /// <reference path="../node_modules/@types/xrm/index.d.ts" />
 
@@ -62,7 +62,7 @@ interface JQueryWindow extends Window {
 {% endhighlight %}
 {:start="3"}
 3. Now, create another TypeScript file and add the following code to it. We'll use this to generate script for a Web Resource.
-{% highlight c# %}
+{% highlight cs %}
 /// <reference path="Fusion5.ts" />
 
 module Fusion5 {
@@ -82,12 +82,38 @@ module Fusion5 {
 4. Add the .js file that is created when you save the .ts file to the project. You may also want to add the .js.map file (the source map for debugging, which we'll get to later).
 5. Note, we're using the Execution Context so you'll need to enable that for the events in the Form Properties.
 6. Finish implementing the Web Resource code according to your requirements. Note, you need to declare types for attributes, which looks like this:
-{% highlight c# %}
+{% highlight cs %}
 var myAtttribute = formContext.getAttribute<Xrm.Attributes.OptionSetAttribute>('fus_myattribute');
 var myLookupAttribute = formContext.getAttribute<Xrm.Attributes.LookupAttribute>('fus_mylookupattribute');
 {% endhighlight %}
 Intellisense helps work things out.
 
 ## Useful Snippets
+Javascript Actions on Ribbon Commands can pass a Crm Parameter of PrimaryControl to the Javascript method. This implements the FormContext interface, so we don't need to worry about the Execution Context and the method declaration in the TypeScript can look like this:
+{% highlight cs %}
+public static SomeAction(primaryControl: Xrm.FormContext) { ... }
+{% endhighlight %}
+
+You can programmatically register an OnChange event handler and the Execution Context is automatically passed to the handler method.
+{% highlight cs %}
+var myAttribute = formContext.getAttribute<Xrm.Attributes.StringAttribute>('fus_myattribute');
+myAttribute.addOnChange(this.OnMyAttributeChange);
+{% endhighlight %}
+
+OnSave methods have their own context.
+{% highlight cs %}
+public static OnSave(executionContext: Xrm.Page.SaveEventContext) {
+  var eventArguments = executionContext.getEventArgs();
+  
+  if(!this.ShouldISaveThisRecord(executionContext)) {
+    eventArguments.preventDefault();
+    return false;
+  }
+  
+  if(eventArguments.getSaveMode() == XrmEnum.SaveMode.AutoSave) {
+    eventArguments.preventDefault(); // Stop Autosave (but not others).
+  }
+}
+{% endhighlight %}
 
 We'll cover deployment and debugging in the next installment. Sorry, this is one of those annoying blogs where you want Part 2 but it's not been written yet. Standby caller.
