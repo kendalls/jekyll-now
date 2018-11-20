@@ -14,7 +14,7 @@ Disclaimer: I got started using [Scott Durow's](http://develop1.net/public/autho
 3. Restart Visual Studio.
 4. Select **New > Project** and create a new **ASP.NET Empty Web Site**.
 5. Select **Add > Add New Item** and **Typescript config file** (tsconfig.json).
-6. Add the compileOnSave option. You may as well turn on noImplicitAny (for strict type checks)
+6. Add the compileOnSave option. You may as well turn on noImplicitAny (for strict type checks) and add some additional types the browser uses (with the lib line) while we're at it.
 {% highlight json %}
 {
   "compilerOptions": {
@@ -48,39 +48,39 @@ npm install @types/jquery --save-dev
 ## Step 2: Start writing TypeScript
 1. Create a folder for your TypeScript files and add a new TypeScript File, named Fusion5.ts, to the project.
 2. Add the following code to the file. We'll use this file as a standard reference in the TypeScript files we create in place of script Web Resources. This means we have Intellisense for common types and workaround the jQuery aliases being defined in the parent window to the Web Resource script.
-{% highlight c# %}
-/// <reference path="../node_modules/@types/jquery/index.d.ts" />
-/// <reference path="../node_modules/@types/xrm/index.d.ts" />
+    {% highlight c# %}
+    /// <reference path="../node_modules/@types/jquery/index.d.ts" />
+    /// <reference path="../node_modules/@types/xrm/index.d.ts" />
 
-interface JQueryWindow extends Window {
-    $: JQueryStatic;
-    jQuery: JQueryStatic;
-}
-{% endhighlight %}
-3. Now, create another TypeScript file and add the following code to it. We'll use this to generate script for a Web Resource.
-{% highlight c# %}
-/// <reference path="Fusion5.ts" />
-
-module Fusion5 {
-    if (typeof $ === 'undefined') {
-        var $ = (<JQueryWindow>parent).$;
-        var jQuery = (<JQueryWindow>parent).jQuery;
+    interface JQueryWindow extends Window {
+        $: JQueryStatic;
+        jQuery: JQueryStatic;
     }
+    {% endhighlight %}
+3. Now, create another TypeScript file and add the following code to it. We'll use this to generate script for a Web Resource.
+    {% highlight c# %}
+    /// <reference path="Fusion5.ts" />
 
-    export class MyEntity {
-        public static OnLoad(executionContext: Xrm.Page.EventContext) {
-            // Do stuff when the Form loads.
+    module Fusion5 {
+        if (typeof $ === 'undefined') {
+            var $ = (<JQueryWindow>parent).$;
+            var jQuery = (<JQueryWindow>parent).jQuery;
+        }
+
+        export class MyEntity {
+            public static OnLoad(executionContext: Xrm.Page.EventContext) {
+                // Do stuff when the Form loads.
+            }
         }
     }
-}
-{% endhighlight %}
+    {% endhighlight %}
 4. Add the .js file that is created when you save the .ts file to the project. You may also want to add the .js.map file (the source map for debugging, which we'll get to later).
 5. Note, we're using the Execution Context so you'll need to enable that for the events in the Form Properties.
 6. Finish implementing the Web Resource code according to your requirements. Note, you need to declare types for attributes, which looks like this:
-{% highlight c# %}
-var myAtttribute = formContext.getAttribute<Xrm.Attributes.OptionSetAttribute>('fus_myattribute');
-var myLookupAttribute = formContext.getAttribute<Xrm.Attributes.LookupAttribute>('fus_mylookupattribute');
-{% endhighlight %}
+    {% highlight c# %}
+    var myAtttribute = formContext.getAttribute<Xrm.Attributes.OptionSetAttribute>('fus_myattribute');
+    var myLookupAttribute = formContext.getAttribute<Xrm.Attributes.LookupAttribute>('fus_mylookupattribute');
+    {% endhighlight %}
 Intellisense helps work things out.
 
 ## Useful Snippets
