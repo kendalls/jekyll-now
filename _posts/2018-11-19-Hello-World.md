@@ -11,9 +11,9 @@ This blog was created using [Jekyll-Now](http://www.github.com/barryclark/jekyll
 To get started with [Jekyll-Now](http://www.github.com/barryclark/jekyll-now):
 1. Bop on over to [Jekyll-Now](http://www.github.com/barryclark/jekyll-now) and smash the Fork button (on the top right).
 2. But first, create a GitHub account. Sorry, I thought you had one already.
-3. Click the Settings button in your newly forked repository, and change the name of the repository to <yourusername>.github.io. This means you have a user website which Github Pages serves up automatically. It's at http://<yourusername>.github.io.
+3. Click the Settings button in your newly forked repository, and change the name of the repository to <yourusername>.github.io. This means you have a user website which Github Pages serves up automatically. It's at http://yourusername.github.io.
 4. Edit the _config.yml file to set the options you want. GitHub Pages takes a moment to rebuild the website when you commit the file.
-5. Use [Prose](Prose) to create/edit posts or just do it in GitHub with the help of [the Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+5. Use [Prose](Prose) to create/edit posts or just do it in GitHub with the help of the [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
   
 To use your own domain name instead of github.io:
 1. Edit the CNAME file in the root of your repository to include your domain name.
