@@ -6,7 +6,7 @@ description: ""
 ---
 
 <div class="about {% if site.scrollappear_enabled %}scrollappear{% endif %}">
-  <img src="{% asset 'about.jpg' @path %}" alt="About Simon Kendall header image" />
+  <img src="/images/about.jpg" alt="About Simon Kendall header image" />
   <h1>About me</h1>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
