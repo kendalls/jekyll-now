@@ -87,4 +87,4 @@ context.AddRelationship("systemuserroles_association", new XrmFakedRelationship
 });
 {% endhighlight %}
 
-FakeXrmEasy also provides methods to test plug-in/workflow execution context. The simplest is ExecutePluginWithContext, but you can use GetDefaultPluginContext() to provide images etc. See (https://dynamicsvalue.com/get-started/plugins)[https://dynamicsvalue.com/get-started/plugins].
+FakeXrmEasy also provides methods to test plug-in/workflow execution context. The simplest is ExecutePluginWithContext, but you can use GetDefaultPluginContext() to provide images etc. See [https://dynamicsvalue.com/get-started/plugins](https://dynamicsvalue.com/get-started/plugins).
