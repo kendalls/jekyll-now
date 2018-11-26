@@ -54,15 +54,17 @@ public void UpdateLockValueTest()
     };
     context.Initialize(new List<Entity>() { contact });
 
-    // All the mocks are belong to us
+    // All the mocks are belong to us.
     var service = context.GetOrganizationService();
     var trace = context.GetFakeTracingService();
     var target = new OrganisationIndividualHelper(service, trace, null);
 
-    // Execute our code under test
+    // Execute our code under test.
+    // FakeXrmEasy's in-memory database and query execution engine
+    // means we can test everying.
     target.UpdateLockValue(contactId);
 
-    // Check the expected stuff happened
+    // Check the expected stuff happenedf
     var actual = context.CreateQuery<Contact>()
         .Where(c => c.Id == contactId)
         .Select(c => c.fus_LockValue).FirstOrDefault();
@@ -70,3 +72,19 @@ public void UpdateLockValueTest()
     Assert.IsTrue(!string.IsNullOrWhiteSpace(actual));
 }
 {% endhighlight %}
+
+It's that easy. Well, almost. One quirk I found was an unhandled exception in a LINQ query with a condition to check an OptionSetValueCollection wasn't null. It worked fine after I removed that condition (and checked it in the code that processed the query results).
+
+We also need to provide a bit more information to FakeXrmEasy for it to deal with m:n relationships. For example:
+{% highlight cs %}
+context.AddRelationship("systemuserroles_association", new XrmFakedRelationship
+{
+    IntersectEntity = "systemuserroles",
+    Entity1LogicalName = SystemUser.EntityLogicalName,
+    Entity1Attribute = "systemuserid",
+    Entity2LogicalName = Role.EntityLogicalName,
+    Entity2Attribute = "roleid"
+});
+{% endhighlight %}
+
+FakeXrmEasy also provides methods to test plug-in/workflow execution context. The simplest is ExecutePluginWithContext, but you can use GetDefaultPluginContext() to provide images etc. See (https://dynamicsvalue.com/get-started/plugins)[https://dynamicsvalue.com/get-started/plugins].
