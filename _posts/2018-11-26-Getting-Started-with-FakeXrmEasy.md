@@ -1,0 +1,72 @@
+---
+layout: post
+title: "Getting Started with FakeXrmEasy"
+description: "How to use FakeXrmEasy to make unit testing your D365 CE easier and faster."
+thumb_image: ""
+tags: [dynamics]
+---
+
+Hat tip to [Dini Ghanda](https://www.linkedin.com/in/dini-ganda-23b28376/?originalSubdomain=nz) for pointing out the [Fake Xrm Easy framework](https://dynamicsvalue.com/home).
+
+Here's all you need to do to unit test your D365 CE code.
+
+## Step 1: Add Nuget Packages
+1. Create a Unit Test Project if you don't have one.
+2. Add the FakeXrmEasy.9 package (or FakeXrmEasy.365/2016 etc for earlier versions of CRM).
+3. Optionally, add your choice of test framework/runner packages (like NUnit or XUnit).
+
+## Step 2: Create a Test Method
+1. First, some using statements
+{% highlight cs %}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Xrm.Sdk;
+using FakeItEasy;
+using FakeXrmEasy;
+
+using CrmEarlyBound;
+using YNZ.CRM.Plugins.BusinessLogic;
+using YNZ.CRM.Plugins.Helper;
+{% endhighlight %}
+{:start="2"}
+2. Then, the test method (with explanatory comments)
+{% highlight cs %}
+[TestMethod]
+public void UpdateLockValueTest()
+{
+    var context = new XrmFakedContext
+    {
+        // Tell the context to use the assembly with our early-bound classes
+        // for typed entities.
+        ProxyTypesAssembly = Assembly.GetAssembly(typeof(Contact))
+    };
+    // Add the objects/state we need for queries and initialise the context.
+    var contactId = Guid.NewGuid();
+    var contact = new Contact
+    {
+        Id = contactId,
+        ContactId = contactId,
+        StateCode = ContactState.Active
+    };
+    context.Initialize(new List<Entity>() { contact });
+
+    // All the mocks are belong to us
+    var service = context.GetOrganizationService();
+    var trace = context.GetFakeTracingService();
+    var target = new OrganisationIndividualHelper(service, trace, null);
+
+    // Execute our code under test
+    target.UpdateLockValue(contactId);
+
+    // Check the expected stuff happened
+    var actual = context.CreateQuery<Contact>()
+        .Where(c => c.Id == contactId)
+        .Select(c => c.fus_LockValue).FirstOrDefault();
+
+    Assert.IsTrue(!string.IsNullOrWhiteSpace(actual));
+}
+{% endhighlight %}
