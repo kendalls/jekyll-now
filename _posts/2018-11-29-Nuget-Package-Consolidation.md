@@ -11,6 +11,6 @@ Right-click your solution file and select **Manage NuGet Packages for Solution**
 
 Select a package, check the projects you want to update (or just leave them all checked as per the default), select the package version to use, and click the **Install** button.
 
-![alt text](/images/posts/nugetpackageconsolidate.jpg "Package consolidation dialog")
+![alt text]({{ site.url }}/images/posts/nugetpackageconsolidate.jpg "Package consolidation dialog")
 
 Voila, all these projects use the same version of the package.
