@@ -48,7 +48,7 @@ if errorlevel 1 (
 {:start="3"}
 3. Replace **"My.Crm.Customisations"** with the name of your project folder.
 
-This uses a couple of command line arguments to connect to CRM. Then it finds spkl.exe and executes the unpack command. Note that package_root and the path for spkl.json (in the spkl command) are set to provide the correct relative paths to spkl and remove any change of processing the incorrect configuration file. This will become clearer in the build definition.
+This uses a couple of command line arguments to connect to CRM. Then it finds spkl.exe and executes the unpack command. Note that package_root and the path for spkl.json (in the spkl command) are set to provide the correct relative paths to spkl and remove any chance of processing the incorrect configuration file. This will become clearer in the build definition.
 
 ## Step 4: Create the Build Pipeline
 1. Go to **Azure Dev Ops** and navigate to **Pipelines > Builds**.
@@ -60,6 +60,10 @@ This uses a couple of command line arguments to connect to CRM. Then it finds sp
 7. Add a **NuGet task** to the build. I run a custom command, **restore Build\My.Crm.Customisations\packages.config -PackagesDirectory .\Build\packages**, since my project is part of a larger solution and we don't need all the packages for the solution.
 8. Add a **Batch Script** task to the build. We want to run **$(Build.SourcesDirectory)\Build\My.Crm.Customisations\unpack.bat** with the arguments **"$(crm.connection)" "$(crm.password)"** to send our build variables in.
 9. Add a **TFVC - Check-in changes** task to the build. Set **Files to check in** to the path to your project folder. Check **I understand**. Set **Recursion** to Full.
+
+The build will look something like this:
+![alt text]({{ site.url }}/images/posts/BuildPipeline.jpg "Build Pipeline tasks")
+
 10. Click **Queue** to test the build.
 6. Click the **Triggers** tab and add a **Scheduled Trigger** to run the build nightly.
 
