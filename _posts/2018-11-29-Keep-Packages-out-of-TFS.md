@@ -29,3 +29,5 @@ Add **.nuget\NuGet.config** file (and folder) to your solution. It should contai
 {% endhighlight %}
 
 This stops the NuGet Package Manager mucking with source control and adding packages to your pending changes. This apparently only happens with pre-VS 2017 versions of Visual Studio. I figure it's worth creating file anyway in case someone opens the solution with an old version of Visual Studio.
+
+Note, my package sources got messed up somehow. I went to **Tools > Options**. selected the NuGet Package Manager section and added **https://api.nuget.org/v3/index.json** as a source.
