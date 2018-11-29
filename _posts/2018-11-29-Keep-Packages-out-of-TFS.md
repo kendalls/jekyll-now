@@ -13,7 +13,7 @@ Add a .tfignore file to your solution. You need to tell TFS to ignore the packag
 {% highlight text %}
 \packages
 !\packages\repositories.config
-{{ endhighlight }}
+{% endhighlight %}
 
 Note, Windows Explorer doesn't like creating a file that starts with a fullstop and has no extension. One workaround is to add a trailing fullstop to the name (which is automatically removed).
 
