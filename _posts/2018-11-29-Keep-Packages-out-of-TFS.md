@@ -5,10 +5,10 @@ description: "How to configure TFS and NuGet to stop adding the packages folder 
 thumb_image: ""
 tags: [Visual Studio]
 ---
-##Step One:
+## Step One:
 Delete your packages folder and check in the change. If it's still there then the new configuration gets ignored.
 
-##Step Two:
+## Step Two:
 Add a .tfignore file to your solution. You need to tell TFS to ignore the packages folder and the repositories.config file in it. So the file should contain:
 {% highlight text %}
 \packages
@@ -17,7 +17,7 @@ Add a .tfignore file to your solution. You need to tell TFS to ignore the packag
 
 Note, Windows Explorer doesn't like creating a file that starts with a fullstop and has no extension. One workaround is to add a trailing fullstop to the name (which is automatically removed).
 
-##Step Three:
+## Step Three:
 Add .nuget\NuGet.config file (and folder) to your solution. It should contain:
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
