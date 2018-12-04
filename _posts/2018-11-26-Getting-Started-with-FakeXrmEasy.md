@@ -58,6 +58,7 @@ public void UpdateLockValueTest()
     var service = context.GetOrganizationService();
     var trace = context.GetFakeTracingService();
     var target = new OrganisationIndividualHelper(service, trace, null);
+    //var dataContext = new XrmServiceContext(service); // Ideally, in a using statement.
 
     // Execute our code under test.
     // FakeXrmEasy's in-memory database and query execution engine
