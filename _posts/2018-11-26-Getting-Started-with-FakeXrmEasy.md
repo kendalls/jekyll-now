@@ -25,12 +25,7 @@ using System.Reflection;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
-using FakeItEasy;
 using FakeXrmEasy;
-
-using CrmEarlyBound;
-using YNZ.CRM.Plugins.BusinessLogic;
-using YNZ.CRM.Plugins.Helper;
 {% endhighlight %}
 {:start="2"}
 2. Then, the test method (with explanatory comments)
@@ -87,5 +82,31 @@ context.AddRelationship("systemuserroles_association", new XrmFakedRelationship
     Entity2Attribute = "roleid"
 });
 {% endhighlight %}
+
+And we can provide more information to FakeXrmEasy for it to deal with requests to retrieve attribute metadata. For example:
+{% highlight cs %}
+var accountMetadata = new EntityMetadata { LogicalName = Account.EntityLogicalName };
+accountMetadata.SetAttribute(new PicklistAttributeMetadata
+{
+    SchemaName = "statecode",
+    LogicalName = "statecode",
+    DisplayName = new Label("Status", 1033),
+    RequiredLevel = new AttributeRequiredLevelManagedProperty(
+        AttributeRequiredLevel.SystemRequired),
+    OptionSet = new OptionSetMetadata
+    {
+        IsGlobal = false,
+        OptionSetType = OptionSetType.State,
+        Options =
+        {
+            new OptionMetadata(new Label(
+                new LocalizedLabel("Active", 1033), null), 0),
+            // We can also do this if the code we're testing doesn't
+            // rely on user localised labels.
+            new OptionMetadata(new Label("Inactive", 1033), 1)
+        }
+    }
+});
+fakeContext.InitializeMetadata(accountMetadata);{% endhighlight %}
 
 FakeXrmEasy also provides methods to test plug-in/workflow execution context. The simplest is ExecutePluginWithContext, but you can use GetDefaultPluginContext() to provide images etc. See [https://dynamicsvalue.com/get-started/plugins](https://dynamicsvalue.com/get-started/plugins).
