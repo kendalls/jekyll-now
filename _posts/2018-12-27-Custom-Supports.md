@@ -6,14 +6,14 @@ thumb_image: ""
 tags: [3d Printing]
 ---
 Lattice supports are good (because they work universally) but there are times where you don't want support everywhere (even if it is just from the build plate).
-You might be printing multiple models that don't all need support or just need support on the outside of the object.
+You might be printing multiple models that don't all need support or just need support on the outside of the object or in particular spots.
 
 Adjusting the **Overhang Threshold** and/or **Pattern Spacing** in the **Support Material** section of the **Print Settings** tab in Slic3r can sometimes help if slicing has generated support material you don't want.
 
-Slic3r Prusa Edition (PE) also has support (no pun intended) for **Support Blockers** and **Support Enforcers** i.e. place where you can select to have no support or places where you'd like to place support.
-However the user interface is clunky and the rectangular blocks are hard to fit with curved shapes on models. Ask me, I know.
+Slic3r Prusa Edition (PE) also has support (no pun intended) for **Support Blockers** and **Support Enforcers** i.e. places where you can select to have no support or places where you'd like to generate support.
+However the user interface is clunky (but likely to improve in later versions of the slicer) and the rectangular blocks are hard to fit with curved shapes on models. Ask me, I know.
 
-To use Support Blockers/Enforcers:
+**To use Support Blockers/Enforcers:**
 1. Double-click the model
 2. Click the **Load generic** button in the settings dialog and enter the dimensions of the area you want to add/block support for.
 3. Select the appropriate **Type**
@@ -38,7 +38,7 @@ However this version with tree support takes 5 hours and 31 minutes and uses 16.
 
 So with custom supports you get a lot less waste and a shorter print time.
 
-To add tree supports to the model:
+**To add tree supports to the model:**
 1. Start Meshmixer and click the **Import** tile
 2. Click **Analysis** on the left of the screen
 3. Click **Overhangs**
