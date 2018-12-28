@@ -22,7 +22,7 @@ However the user interface is clunky (but likely to improve in later versions of
 
 But there is an easier way. [Meshmixer](http://www.meshmixer.com/download.html). Which uses tree supports. And it's free.
 
-Here's an example of where I found it useful. This is the shell of a [Volkswagen Type 2](https://fab365.net/items/95) which needs some support on the outside of the body.
+Here's an example of where it could be useful. This is the shell of a [Volkswagen Type 2](https://fab365.net/items/95) which looks like it needs some support on the outside of the body. I say "looks like" because it turns out the underside of the lip has a 45 degree chamfer and prints ok without support, but we'll pretend it does need it to compare lattice and tree support.
 
 ![alt text]({{ site.url }}/images/posts/TransporterModel.jpg "Type 2 Shell")
 
