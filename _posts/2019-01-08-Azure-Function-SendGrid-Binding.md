@@ -19,7 +19,8 @@ Note, once you have verified your email, the free plan in Azure let's you send 2
 
 ## Step 2: Add Library and Output Binding to Function
 1. Add the **Microsoft.Azure.WebJobs.Extensions.SendGrid** NuGet package to your Function project. Use version 2.x for the 1.x Functions runtime and 3.x for runtime 2.x.
-2. Add a SendGrid output binding to your function, using an out parameter or return attribute (if your Function is asynchronous). For example:
+2. Add an **App Setting** to your Function containing the API Key value you created in the first step. I've imaginatively named it MySendGridAppSettingName in this case so it's clear that the attribute below doesn't contain the value of the key. You can (apparently) omit the ApiKey property if your app setting is named **AzureWebJobsSendGridApiKey**.
+3. Add a SendGrid output binding to your function, using an out parameter or return attribute (if your Function is asynchronous). For example:
 {% highlight cs %}
 [FunctionName("SendEmail")]
 public static void Run([SomeInputTrigger(...)] string myInput, 
@@ -31,8 +32,6 @@ public static void Run([SomeInputTrigger(...)] string myInput,
 [return: SendGrid(ApiKey = "MySendGridKeyAppSettingName")]
 public static async Task<Mail> Run([OrchestrationTrigger]DurableOrchestrationContext context,  ILogger log) { ... }
 {% endhighlight %}
-
-You can (apparently) omit the ApiKey property if your app setting is named **AzureWebJobsSendGridApiKey**. The value in the app setting is the API Key you created in the first step.
 
 Note, the output binding doesn't show up in the generated function.json file, so don't worry about that.
 
