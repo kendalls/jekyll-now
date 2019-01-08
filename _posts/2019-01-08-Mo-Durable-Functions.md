@@ -12,9 +12,9 @@ Here's how to use Durable Functions to implement a fan-out/fan-in pattern and ha
 There are, of course, other scenarios where Durable Functions makes sense and you can find out more [here](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview) and see [patterns illustrated](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-concepts).
 
 We're going to take our poorly performing Function and split it up into three Functions. 
-The **Client Function** which is triggered and then starts the Orchestrator Function off.
-The **Orchestrator Function** which splits up the payload we need to process and calls the Activity Functions.
-The **Activity Function** which processes each item in the payload.
+1. The **Client Function** which is triggered and then starts the Orchestrator Function off.
+2. The **Orchestrator Function** which splits up the payload we need to process and calls the Activity Functions.
+3. The **Activity Function** which processes each item in the payload.
 
 Because the client function and orchestrator function wait without blocking while the activity function executes and multiple instances of the activity function are executed in paralell, each function doesn't take long to run at all. 
 
