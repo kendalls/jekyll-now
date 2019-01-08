@@ -76,7 +76,7 @@ public static string CompressString(string text)
 {% endhighlight %}
 
 ## Step 2: The Orchestrator Function
-This Function controls how the payload is processed. It needs to be triggered by the client function and an **orchestration trigger**. The Durable Task Framework checkpoints the execution state of the function into table storage at any and each await statement. The function is run from its beginning again each time it is resumed from an await and the framework replays the output of activity function calls if they have already taken place. So our orchestrator function looks like this:
+This Function controls how the payload is processed. It needs to be triggered by the client function and an **orchestration trigger**. The Durable Task Framework checkpoints the execution state of the function into table storage at any and each await statement. The function is run from its beginning again each time it is resumed from an await and the framework replays the output of activity function calls if they have already taken place. Our orchestrator function looks like this:
 {% highlight cs %}
 [FunctionName("MyOrchestration")]
 [return: SendGrid(ApiKey = "SendGridKey")] // Output binding (since async method cannot have out parameter)
@@ -121,7 +121,7 @@ public static async Task<Mail> OrchestrateThings([OrchestrationTrigger]DurableOr
         var messageContent = new Content("text/html", "Bugger, something went wrong.");
         mail.AddContent(messageContent);
         mail.Subject = "MyOrchestration Failure";
-        mail.From = new Email("no-reply@mycompnay.co.nz");
+        mail.From = new Email("no-reply@mycompany.co.nz");
 
         return mail;
     }
@@ -187,3 +187,5 @@ public static MyActivityResult Run([ActivityTrigger]DurableActivityContext conte
     }
 }
 {% endhighlight %}
+
+Publish that lot and you'll have a Function (or three) that does the same work as the previous non-durable one.
