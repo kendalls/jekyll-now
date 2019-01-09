@@ -29,7 +29,7 @@ It looked like the current version of the MySQL Preference Pane (which can be in
 ## Step Two: Uninstall MariaDB
 There's a bit of a lack of GUI management tools for it. MySQL Workbench isn't fully compatible.
 1. *brew remove mariadb*
-2. *rm -rf /usr/local/val/mysql*
+2. *rm -rf /usr/local/var/mysql*
 3. *brew cleanup*
 
 ## Step Three: Install MySQL
