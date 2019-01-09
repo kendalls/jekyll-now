@@ -4,7 +4,7 @@ title: "OSX Apache Development Environment"
 description: "Setting up a local development environment for Apache on OSX."
 thumb_image: ""
 tags: [Web Development]
-published: false
+published: true
 ---
 There are many many ways to misconfigure Apache and get a 403 Forbidden error when you try to browse a site that I thought I'd better keep a note of how I got it all working.
 
@@ -51,11 +51,18 @@ LoadModule authz_host_module libexec/apache2/mod_authz_host.so
 LoadModule authz_core_module libexec/apache2/mod_authz_core.so
 LoadModule userdir_module libexec/apache2/mod_userdir.so
 LoadModule vhost_alias_module libexec/apache2/mod_vhost_alias.so
+LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+LoadModule php7_module libexec/apache2/libphp7.so
   
 Include /private/etc/apache2/extra/httpd-userdir.conf
 Include /private/etc/apache2/extra/httpd-vhosts.conf
 {% endhighlight %}
-4. Edit **/etc/apache2/extra/httpd-userdir.conf** and uncomment the line *Include /private/etc/apache2/users/*.conf*
+4. Also change the default root location as follows and then below these liness, change *AllowOverride None* to *All*:
+{% highlight %}
+DocumentRoot "/Users/username/Sites"
+<Directory "/Users/username/Sites">
+{% endhighlight %}
+5. Edit **/etc/apache2/extra/httpd-userdir.conf** and uncomment the line *Include /private/etc/apache2/users/*.conf*
 
 ## Step Four: Test the configuration
 1. Execute *sudo apachectl configtest* and ensure it doesn't report any errors
@@ -86,3 +93,31 @@ This lets us browse *http://foo.localhost* (instead of http://localhost/~usernam
 4. Browse to http://foo.localhost and check it works.
 
 ## Step Six: Configure PHP
+We've already enabled the PHP module. To execute PHP code within HTML files:
+1. Add the following block to the top of the **/etc/apache2/extra/httpd-vhosts.conf** file:
+{% highlight %}
+<FilesMatch ".+\.html$">
+  SetHandler application/x-httpd-php
+</FilesMatch>
+{% endhighlight %}
+2. Change our index.html file in the foo site to contain:
+{% highlight %}
+<?php
+	date_default_timezone_set('Pacific/Auckland');
+	$day = date('l');
+?>
+<!doctype html>
+<html>
+<head>
+<title>Hello, World! | Foo</title>
+</head>
+<body>
+<h1>Hello, World!</h1>
+<p>Welcome to <strong>Foo</strong>.</p>
+<p>It's <?php echo $day; ?>.</p>
+</body>
+</html>
+{% endhighlight %}
+3. Browse to *http://foo.localhost* to check it still works.
+
+Phew, we're done here. Now we can think about isolating all this from our host file system with things like Docker or Vagrant.
