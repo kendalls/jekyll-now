@@ -11,7 +11,7 @@ But you can't install WordPress plugins unless you pay for the business edition.
 
 Alrighty then, WordPress. You give me no option but to create a local development/test environment (on OSX).
 
-You should really skip the first two steps.
+You should really skip the first two steps below. They're just there to remind me not to try using MariaDB next time I do this.
 
 ## Step One: Install MariaDB (using HomeBrew)
 1. Start Terminal.
