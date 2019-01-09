@@ -32,7 +32,7 @@ Copy the content of **/etc/apache2/original** into its parent folder (apache2).
 		</html>
 
 ## Step Three: Configure Apache
-1. Create a file named **<yourusername>.conf** in **/etc/apache2/users**. 
+1. Create a file named **yourusername.conf** in **/etc/apache2/users**. 
 Use **whoami** in Terminal to check the exact spelling of your username if you're not sure.
 Add the following content:
 
@@ -43,7 +43,8 @@ Add the following content:
 		</Directory>
 
 Check you've replaced *username* with your actual username.
-2. Ensure Apache has permission to read this file by running *sudo chmod 644 <username>.conf*.
+{:start="2"}
+2. Ensure Apache has permission to read this file by running *sudo chmod 644 username.conf*.
 3. Edit **/etc/apache2/httpd.conf** and uncomment the following lines:
 
 		LoadModule authz_host_module libexec/apache2/mod_authz_host.so
@@ -56,12 +57,12 @@ Check you've replaced *username* with your actual username.
 		Include /private/etc/apache2/extra/httpd-userdir.conf
 		Include /private/etc/apache2/extra/httpd-vhosts.conf
 
-4. Also change the default root location as follows and then below these liness, change *AllowOverride None* to *All*:
+4. Also change the default root location as follows and then below these lines, change *AllowOverride None* to *All*:
 
 		DocumentRoot "/Users/username/Sites"
 		<Directory "/Users/username/Sites">
 
-5. Edit **/etc/apache2/extra/httpd-userdir.conf** and uncomment the line *Include /private/etc/apache2/users/*.conf*
+5. Edit **/etc/apache2/extra/httpd-userdir.conf** and uncomment the line _Include /private/etc/apache2/users/*.conf_
 
 ## Step Four: Test the configuration
 1. Execute *sudo apachectl configtest* and ensure it doesn't report any errors
