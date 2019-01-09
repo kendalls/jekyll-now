@@ -11,6 +11,8 @@ But you can't install WordPress plugins unless you pay for the business edition.
 
 Alrighty then, WordPress. You give me no option but to create a local development/test environment (on OSX).
 
+You should really skip the first two steps.
+
 ## Step One: Install MariaDB (using HomeBrew)
 1. Start Terminal.
 2. Run *brew doctor* to check HomeBrew is good to go. Run the indicated commands to address any warnings that are displayed.
@@ -36,3 +38,16 @@ There's a bit of a lack of GUI management tools for it. MySQL Workbench isn't fu
 3. Download and install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
 The MySQL install now lets you supply a password for the root user so you don't have to worry about that old palava.
+
+## Step Four: Configure Apache
+See [/OSX-Apache-Development-Environment/](/OSX-Apache-Development-Environment/).
+
+## Step Five: Install WordPress
+1. Create a new database for WordPress to use, named something like localhost_websitename.
+2. If you want to use the command line, then *brew install wp-cli*, followed by *mkdir ~/Sites/websitename && cd ~/Sites/websitename && wp core download && wp config create --dbname=localhost_websitename --dbuser=root --dbpass= --dbhost=127.0.0.1*.
+3. Or, download [WordPress](https://en-nz.wordpress.org/download) and unzip it into your site folder, and then edit *wp-config-sample.php* to supply the database connection details and save it as *wp-config.php*.
+4. Browse to http://yoursitename.localhost/wp-admin/install.php to finish configuring the WordPress site.
+
+Note that you can use an *.htaccess* file to implement redirects and security restriction for the site.
+
+Note also that WordPress won't connect to your database if MySQL (v8) uses **Strong Password Encryption** and it's probably better to use 127.0.0.1 as the database server name instead of localhost. One way to switch back to the earlier authentication method is to use the **Initialize Database** button in the MySQL Preference Pane (in System Preferences).
