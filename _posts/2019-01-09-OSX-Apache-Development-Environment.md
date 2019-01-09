@@ -4,7 +4,7 @@ title: "OSX Apache Development Environment"
 description: "Setting up a local development environment for Apache on OSX."
 thumb_image: ""
 tags: [Web Development]
-published: true
+published: false
 ---
 There are many many ways to misconfigure Apache and get a 403 Forbidden error when you try to browse a site that I thought I'd better keep a note of how I got it all working.
 
