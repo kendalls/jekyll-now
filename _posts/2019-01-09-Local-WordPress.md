@@ -4,7 +4,7 @@ title: "Local WordPress"
 description: "How to setup a local WordPress environment."
 thumb_image: ""
 tags: [WordPress]
-published: false
+published: true
 ---
 I thought I'd just register a new WordPress site to test the [AlexaCRM Integration Plugin](https://github.com/AlexaCRM/integration-dynamics).
 But you can't install WordPress plugins unless you pay for the business edition. Who knew?
