@@ -24,6 +24,7 @@ We'll register an app in Azure, create an application user in CRM, and write a b
 ## Step Three: C# Connection
 This uses [David Yack's Web API Helper](https://github.com/davidyack/Xrm.Tools.CRMWebAPI) but that doesn't make much difference.
 {% highlight cs %}
+    
     using System.Threading.Tasks;
 
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
