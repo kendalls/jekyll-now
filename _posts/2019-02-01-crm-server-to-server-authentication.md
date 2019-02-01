@@ -22,3 +22,28 @@ We'll register an app in Azure, create an application user in CRM, and write a b
 3. Create a new custom Security Role for the user and assign it to them.
 
 ## Step Three: C# Connection
+This uses [David Yack's Web API Helper](https://github.com/davidyack/Xrm.Tools.CRMWebAPI) but that doesn't make much difference.
+{% highlight cs %}
+using System.Threading.Tasks;
+
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Xrm.Tools.WebAPI;
+
+    public static class CRMWebApiHelper
+    {
+        public async static Task<CRMWebAPI> GetApi()
+        {
+            var authority = "https://login.microsoftonline.com/";
+            var clientid = "8bdb******************";
+            var crmBaseUrl = "https://********.crm6.dynamics.com";
+            var clientSecret = "z2+*****************************";
+            var tenantId = "6196*******************";
+
+            var clientCredential = new ClientCredential(clientid, clientSecret);
+            var authContext = new AuthenticationContext(authority + tenantId);
+            var authResult = await authContext.AcquireTokenAsync(crmBaseUrl, clientCredential);
+
+            return new CRMWebAPI(crmBaseUrl + "/api/data/v9.1/", authResult.AccessToken);
+        }
+    }
+{% endhighlight %}
