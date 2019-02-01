@@ -17,5 +17,8 @@ We'll register an app in Azure, create an application user in CRM, and write a b
 6. You can also click **Endpoints** in the app list and copy the **OAuth 2.0 authorization endpoint** value, but the default shown in the code will also work.
 
 ## Step Two: Create an Application User
+1. In your D365 organization, navigate to **Settings** > **Security** > **Users** and click **+New**.
+2. Change the form to **APPLICATION USER** and supply values for User Name, Full Name, Primary Email, and paste in the Application ID from above. The rest of the values will be populated when you save the record.
+3. Create a new custom Security Role for the user and assign it to them.
 
 ## Step Three: C# Connection
