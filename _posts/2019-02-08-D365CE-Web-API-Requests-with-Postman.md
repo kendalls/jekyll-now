@@ -75,3 +75,17 @@ Click **Update** to close the dialog.
 Note that you can use the refresh_token value from the original authentication request to obtain a new access token when it expires, but we just authenticate again to get a new token since it's less work to setup.
 
 ## Step 4: Create Request
+Create a new GET request to the D365 CE Web API endpoint.
+
+On the **Authorization** tab, set **Type** to **Inherit auth from parent**.
+
+Set the following headers:
+ * Accept: application/json
+ * Cache-Control: no-cache
+ * Content-Type: application/json; charset=utf-8
+ * OData-MaxVersion: 4.0
+ * OData-Version: 4.0
+ 
+ If you don't have the **Postman Console** window open, click **View** > **Show Postman Console**.
+ When you send the request you'll first see the POST request for the authentication token in the console window.
+ When you resend the request it shouldn't make the authentication request again (until the token expires).
