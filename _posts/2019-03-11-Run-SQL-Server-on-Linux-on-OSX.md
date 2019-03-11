@@ -14,6 +14,7 @@ Note, when you sign in to Docker use your username rather than email address oth
 If you login to Docker Hub, you'll see your username on the right hand end of the menu bar.
 
 To download the latest SQL Server image, run the following command in a Terminal window:
+
 {% highlight %}
    sudo docker pull microsoft/mssql-server-linux:2017-latest
 {% endhighlight %}
