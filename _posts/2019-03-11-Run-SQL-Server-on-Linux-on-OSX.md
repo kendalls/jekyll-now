@@ -13,4 +13,7 @@ Docker has a simple interface, that appears in your menu bar. The command line i
 Note, when you sign in to Docker use your username rather than email address otherwise you'll get an "Unauthorized: incorrect username or password" error when you try to start container images.
 If you login to Docker Hub, you'll see your username on the right hand end of the menu bar.
 
-
+To download the latest SQL Server image, run the following command in a Terminal window:
+{% highlight %}
+   sudo docker pull microsoft/mssql-server-linux:2017-latest
+{% endhighlight %}
