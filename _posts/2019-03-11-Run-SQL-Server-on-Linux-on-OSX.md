@@ -20,7 +20,10 @@ sudo docker pull microsoft/mssql-server-linux:2017-latest
 
 To run the image, enter the following command:
 {% highlight shell %}
-sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=<your new password>' -p 1433:1433 --name mssql -d microsoft/mssql-server-linux:2017-latest
+sudo docker run -e 'ACCEPT_EULA=Y' 
+  -e 'SA_PASSWORD=<your new password>' 
+  -p 1433:1433 --name mssql 
+  -d microsoft/mssql-server-linux:2017-latest
 {% endhighlight %}
 The name option is a friendly name for the container that is good to keep short because you'll use it a lot to start/stop the image and other things.
 
